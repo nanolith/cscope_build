@@ -1,0 +1,6 @@
+#!/bin/sh -x
+
+find . -name "*.c" -or -name "*.h" -or -name "*.cpp" -or -name "*.java" > cscope.files
+cscope -b -q -i cscope.files 2> /dev/null
+rm -f tags
+cat cscope.files | xargs ctags -a -f tags
